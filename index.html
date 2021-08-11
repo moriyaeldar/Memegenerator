@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>MEMEGEN</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/main.css" rel="stylesheet">
+</head>
+
+<body onload="init()">
+    <div class="screen" onclick="toggleMenu()"></div>
+
+    <header class="flex space-between space-around align-center">
+        <img class="logo" src="pic/LOGO.png" alt="">
+        <nav>
+            <ul class="main-nav flex clean-list">
+                <li><a href="#" onclick="toggleMenu()">memes</a></li>
+                <li><a href="#" onclick="toggleMenu()">gallery</a></li>
+                <li><a href="#" onclick="toggleMenu()">about</a></li>
+            </ul>
+        </nav>
+        <button class="btn-menu-toggle" onclick="toggleMenu()">☰</button>
+    </header>
+
+    <div class="opening-window">
+        <div class="images-gallery grid ">
+            <img class="pic1" onclick="onEditorOpen()" src="pic/1.jpg" alt="">
+            <img class="pic2" onclick="onEditorOpen()" src="pic/2.jpg" alt="">
+            <img class="pic3" onclick="onEditorOpen()" src="pic/3.jpg" alt="">
+            <img class="pic4" onclick="onEditorOpen()" src="pic/4.jpg" alt="">
+            <img class="pic5" onclick="onEditorOpen()" src="pic/5.jpg" alt="">
+            <img class="pic6" onclick="onEditorOpen()" src="pic/6.jpg" alt="">
+            <img class="pic7" onclick="onEditorOpen()" src="pic/7.jpg" alt="">
+            <img class="pic8" onclick="onEditorOpen()" src="pic/8.jpg" alt="">
+            <img class="pic9" onclick="onEditorOpen()" src="pic/9.jpg" alt="">
+            <img class="pic10" onclick="onEditorOpen()" src="pic/10.jpg" alt="">
+            <img class="pic11" onclick="onEditorOpen()" src="pic/11.jpg" alt="">
+            <img class="pic12" onclick="onEditorOpen()" src="pic/12.jpg" alt="">
+            <img class="pic13" onclick="onEditorOpen()" src="pic/13.jpg" alt="">
+            <img class="pic14" onclick="onEditorOpen()" src="pic/14.jpg" alt="">
+            <img class="pic15" onclick="onEditorOpen()" src="pic/15.jpg" alt="">
+            <img class="pic16" onclick="onEditorOpen()" src="pic/16.jpg" alt="">
+            <img class="pic17" onclick="onEditorOpen()" src="pic/17.jpg" alt="">
+            <img class="pic18" onclick="onEditorOpen()" src="pic/18.jpg" alt="">
+        </div>
+
+
+    </div>
+    <div class="editor">
+        <select onchange="setShape(value)">
+        <option value="triangle">triangle</option>
+        <option value="rect">square</option>
+        <option value="arc">circle</option>
+        <option value="line">line</option>
+        <option value="smiley">smiley</option>
+    </select>
+        <p>write some text here:</p><input onclick="onInputFromUser()" type="text" name="text" id=""><input onclick="setShape('text')" type="submit" value="submit">
+        <p>select color:</p><input onclick="onInputFromUser()" type="color" name="color" id="">
+
+        <div class="bar-options">
+            <button onclick="clearCanvas()">Clear</button>
+            <button><a href="#" onclick="downloadCanvas(this)" download="myphoto">Download</a>
+        </button>
+        </div>
+
+        <div class="share-container"></div>
+        <div class="canvas-container">
+            <canvas id="my-canvas" height="566.53" width="750" onclick="draw(event)"></canvas>
+        </div>
+    </div>
+    </div>
+
+    <script src="js/upload-service.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/controller.js"></script>
+</body>
+
+</html>
