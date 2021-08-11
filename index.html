@@ -25,49 +25,54 @@
 
     <div class="opening-window">
         <div class="images-gallery grid ">
-            <img class="pic1" onclick="onEditorOpen()" src="pic/1.jpg" alt="">
-            <img class="pic2" onclick="onEditorOpen()" src="pic/2.jpg" alt="">
-            <img class="pic3" onclick="onEditorOpen()" src="pic/3.jpg" alt="">
-            <img class="pic4" onclick="onEditorOpen()" src="pic/4.jpg" alt="">
-            <img class="pic5" onclick="onEditorOpen()" src="pic/5.jpg" alt="">
-            <img class="pic6" onclick="onEditorOpen()" src="pic/6.jpg" alt="">
-            <img class="pic7" onclick="onEditorOpen()" src="pic/7.jpg" alt="">
-            <img class="pic8" onclick="onEditorOpen()" src="pic/8.jpg" alt="">
-            <img class="pic9" onclick="onEditorOpen()" src="pic/9.jpg" alt="">
-            <img class="pic10" onclick="onEditorOpen()" src="pic/10.jpg" alt="">
-            <img class="pic11" onclick="onEditorOpen()" src="pic/11.jpg" alt="">
-            <img class="pic12" onclick="onEditorOpen()" src="pic/12.jpg" alt="">
-            <img class="pic13" onclick="onEditorOpen()" src="pic/13.jpg" alt="">
-            <img class="pic14" onclick="onEditorOpen()" src="pic/14.jpg" alt="">
-            <img class="pic15" onclick="onEditorOpen()" src="pic/15.jpg" alt="">
-            <img class="pic16" onclick="onEditorOpen()" src="pic/16.jpg" alt="">
-            <img class="pic17" onclick="onEditorOpen()" src="pic/17.jpg" alt="">
-            <img class="pic18" onclick="onEditorOpen()" src="pic/18.jpg" alt="">
+            <img class="pic1" onclick="onEditorOpen(this)" src="pic/1.jpg" alt="">
+            <img class="pic2" onclick="onEditorOpen(this)" src="pic/2.jpg" alt="">
+            <img class="pic3" onclick="onEditorOpen(this)" src="pic/3.jpg" alt="">
+            <img class="pic4" onclick="onEditorOpen(this)" src="pic/4.jpg" alt="">
+            <img class="pic5" onclick="onEditorOpen(this)" src="pic/5.jpg" alt="">
+            <img class="pic6" onclick="onEditorOpen(this)" src="pic/6.jpg" alt="">
+            <img class="pic7" onclick="onEditorOpen(this)" src="pic/7.jpg" alt="">
+            <img class="pic8" onclick="onEditorOpen(this)" src="pic/8.jpg" alt="">
+            <img class="pic9" onclick="onEditorOpen(this)" src="pic/9.jpg" alt="">
+            <img class="pic10" onclick="onEditorOpen(this)" src="pic/10.jpg" alt="">
+            <img class="pic11" onclick="onEditorOpen(this)" src="pic/11.jpg" alt="">
+            <img class="pic12" onclick="onEditorOpen(this)" src="pic/12.jpg" alt="">
+            <img class="pic13" onclick="onEditorOpen(this)" src="pic/13.jpg" alt="">
+            <img class="pic14" onclick="onEditorOpen(this)" src="pic/14.jpg" alt="">
+            <img class="pic15" onclick="onEditorOpen(this)" src="pic/15.jpg" alt="">
+            <img class="pic16" onclick="onEditorOpen(this)" src="pic/16.jpg" alt="">
+            <img class="pic17" onclick="onEditorOpen(this)" src="pic/17.jpg" alt="">
+            <img class="pic18" onclick="onEditorOpen(this)" src="pic/18.jpg" alt="">
         </div>
 
 
     </div>
     <div class="editor">
-        <select onchange="setShape(value)">
-        <option value="triangle">triangle</option>
-        <option value="rect">square</option>
-        <option value="arc">circle</option>
-        <option value="line">line</option>
-        <option value="smiley">smiley</option>
+        <a href="#" onclick="onEditorClose()">← Back to Gallery</a>
+        <div class="bar-options">
+
+        </div> <select onchange="setFont(value)">
+        <option value="Impact">Impact</option>
+        <option value="Roboto">Roboto</option>
+        <option value="Varela">Varela</option>
+        <option value="Nunito">Nunito</option>
+        <option value="Nunito-Bold">Nunito-Bold</option>
     </select>
-        <p>write some text here:</p><input onclick="onInputFromUser()" type="text" name="text" id=""><input onclick="setShape('text')" type="submit" value="submit">
+        <input onclick="drawText(event)" onkeyup="renderText(event)" type="text" name="text1" placeholder="text here" id="1">
+        <input onclick="drawText(event)" type="text" name="text2" placeholder="text here" id="2">
+        <input onclick="drawText(event)" type="text" name="text3" placeholder="text here" id="3">
         <p>select color:</p><input onclick="onInputFromUser()" type="color" name="color" id="">
 
-        <div class="bar-options">
-            <button onclick="clearCanvas()">Clear</button>
-            <button><a href="#" onclick="downloadCanvas(this)" download="myphoto">Download</a>
+
+        <button onclick="clearCanvas()">Clear</button>
+        <button><a href="#" onclick="downloadCanvas(this)" download="myphoto">Download</a>
         </button>
-        </div>
 
         <div class="share-container"></div>
         <div class="canvas-container">
-            <canvas id="my-canvas" height="566.53" width="750" onclick="draw(event)"></canvas>
+            <canvas id="my-canvas" height="566.53" width="650"></canvas>
         </div>
+    </div>
     </div>
     </div>
 

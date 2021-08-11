@@ -1,5 +1,7 @@
 function clearCanvas() {
-    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
+    gCtx.clearRect(this.position.x, this.position.y, this.options.width, this.options.height);
+
+
 }
 
 function downloadCanvas(elLink) {

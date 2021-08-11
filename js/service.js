@@ -1,113 +1,71 @@
 'use strict'
-var gCurrShape;
-var painting = false
+var gCurrFont;
+var painting = false;
+var gMeme = {
+    selectedImgId: 5,
+    selectedLineIdx: 0,
+    lines: [{
+            txt: 'hiiiiiiiiii',
+            size: 35,
+            align: 'left',
+            color: 'red'
+        },
+        {
+            txt: 'relly???!!',
+            size: 35,
+            align: 'left',
+            color: 'red'
+        },
+        {
+            txt: 'yes, I know it!',
+            size: 35,
+            align: 'left',
+            color: 'red'
+        }
+
+    ]
+}
+
+// Render
+
+function renderText() {
+    gMeme.lines[0].txt = gTxt1
+    gMeme.lines[1].txt = gTxt2
+    gMeme.lines[2].txt = gTxt3
+}
 
 
-// Shapes
 
-function drawLine(x, y) {
+// On canvas
+
+function drawText(text) {
+    var text = gMeme.lines[0].txt
     gCtx.lineWidth = 2
-    gCtx.moveTo(x, y)
-    gCtx.lineTo(x, y)
-    gCtx.lineCap = "round"
-    gCtx.strokeStyle = gCurrColor
-    gCtx.stroke()
-}
-
-function drawTriangle(x, y) {
-    gCtx.beginPath()
-    gCtx.lineWidth = 2
-    gCtx.moveTo(x, y)
-    gCtx.lineTo(130, 330)
-    gCtx.lineTo(50, 370)
-    gCtx.closePath()
-    gCtx.lineTo(x, y)
-    gCtx.strokeStyle = gCurrColor
-    gCtx.stroke()
-}
-
-function drawRect(x, y) {
-    gCtx.beginPath()
-    gCtx.rect(x, y, 50, 50)
-    gCtx.strokeStyle = gCurrColor
-    gCtx.stroke()
-}
-
-function drawArc(x, y) {
-    gCtx.beginPath()
-    gCtx.lineWidth = 6
-    gCtx.arc(x, y, 30, 0, 2 * Math.PI);
-    gCtx.strokeStyle = gCurrColor
-    gCtx.stroke();
-
-}
-
-function drawText(gTxt, x, y) {
-    gCtx.font = '25px san serif';
-    gCtx.fillText(gTxt, x, y);
-    gCtx.lineWidth = 2
-    gCtx.fillStyle = gCurrColor
-    gCtx.font = '40px Arial'
-    gCtx.fillText(gTxt, x, y)
-    gCtx.strokeText(gTxt, x, y)
-}
-
-function drawSmiley(x, y) {
-    gCtx.beginPath();
-    gCtx.arc(75, 75, 50, 0, Math.PI * 2, true);
-    gCtx.moveTo(110, 75);
-    gCtx.arc(75, 75, 35, 0, Math.PI, false);
-    gCtx.moveTo(65, 65);
-    gCtx.arc(60, 65, 5, 0, Math.PI * 2, true);
-    gCtx.moveTo(95, 65);
-    gCtx.arc(90, 65, 5, 0, Math.PI * 2, true);
-    gCtx.stroke();
-
-}
-
-// Drawing
-
-function setShape(shape) {
-    gCurrShape = shape
+    gCtx.moveTo(50, 50)
+    gCtx.lineTo(200, 200)
+    gCtx.fillStyle = 'white'
+    gCtx.font = '40px gCurrFont'
+    gCtx.fillText(text, 70, 50)
+    gCtx.strokeStyle = 'black'
+    gCtx.strokeText(text, 70, 50)
 }
 
 
-function draw(ev) {
-    if (!painting) return
-    const { offsetX, offsetY } = ev
-    switch (gCurrShape) {
-        case 'triangle':
-            drawTriangle(offsetX, offsetY)
-            break;
-        case 'rect':
-            drawRect(offsetX, offsetY)
-            break;
-        case 'arc':
-            drawArc(offsetX, offsetY)
-            break;
-        case 'text':
-            drawText(gTxt, offsetX, offsetY)
-            break;
-        case 'line':
-            drawLine(offsetX, offsetY)
-            break;
-        case 'smiley':
-            drawSmiley(offsetX, offsetY)
-            break;
+
+function drawImg(src) {
+    var img = new Image()
+    img.src = src;
+    img.onload = () => {
+        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
     }
 }
 
-// START&FINISH
 
-function startPosition(ev) {
-    painting = true
-    draw(ev)
+function setFont(font) {
+    gCurrFont = font
 }
 
-function finishPosition() {
-    painting = false
-    gCtx.beginPath()
-}
+
 
 // uploud
 
