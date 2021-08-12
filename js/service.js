@@ -1,54 +1,67 @@
 'use strict'
 var gCurrFont;
-var painting = false;
 var gMeme = {
-    selectedImgId: 5,
+    selectedImgSrc: 0,
     selectedLineIdx: 0,
     lines: [{
             txt: 'hiiiiiiiiii',
-            size: 35,
-            align: 'left',
-            color: 'red'
+            size: '45',
+            align: 'center',
+            color: 'white',
+            font: 'Impact',
+            positionx: 150,
+            positiony: 150
         },
         {
             txt: 'relly???!!',
-            size: 35,
-            align: 'left',
-            color: 'red'
+            size: ' 45',
+            align: 'center',
+            color: 'white',
+            font: 'Impact',
+            positionx: 150,
+            positiony: 300
         },
         {
             txt: 'yes, I know it!',
-            size: 35,
-            align: 'left',
-            color: 'red'
+            size: '45',
+            align: 'center',
+            color: 'white',
+            font: 'Impact',
+            positionx: 150,
+            positiony: 480
         }
 
     ]
 }
-
+console.log(gMeme);
 // Render
 
 function renderText() {
-    gMeme.lines[0].txt = gTxt1
-    gMeme.lines[1].txt = gTxt2
-    gMeme.lines[2].txt = gTxt3
+    var txt = gMeme.lines[gMeme.selectedLineIdx].txt
+    txt = gTxt
+    gMeme.lines.forEach(line => {
+        line.fillStyle = gCurrColor
+        line.font = gCurrFont
+        line.size = gCurrSize
+        line.textAlign = gCurrAlign
+    });
+
+
 }
 
 
 
 // On canvas
 
-function drawText(text) {
-    var text = gMeme.lines[0].txt
+
+function drawText(gTxt, x, y) {
     gCtx.lineWidth = 2
-    gCtx.moveTo(50, 50)
-    gCtx.lineTo(200, 200)
     gCtx.fillStyle = 'white'
-    gCtx.font = '40px gCurrFont'
-    gCtx.fillText(text, 70, 50)
-    gCtx.strokeStyle = 'black'
-    gCtx.strokeText(text, 70, 50)
+    gCtx.font = '40px Impact'
+    gCtx.fillText(gTxt, x, y)
+    gCtx.strokeText(gTxt, x, y)
 }
+
 
 
 
@@ -62,23 +75,42 @@ function drawImg(src) {
 
 
 function setFont(font) {
+    switch (font) {
+        case 'Impact':
+            gCurrFont = 'Impact'
+            break;
+        case 'Roboto':
+            gCurrFont = 'Roboto'
+            break;
+        case 'Varela':
+            gCurrFont = 'Varela'
+            break;
+        case 'Nunito':
+            gCurrFont = 'Nunito'
+            break;
+        case 'Nunito-Bold':
+            gCurrFont = 'Nunito - Bold'
+            break;
+
+        default:
+            gCurrFont = 'Impact'
+            break;
+    }
+
     gCurrFont = font
 }
 
+function clearLine(id) {
+    gMeme.lines.splice(id, 1)
+    console.log(gMeme);
+}
 
-
-// uploud
-
-function loadImageFromInput(ev, onImageReady) {
-    document.querySelector('.share-container').innerHTML = ''
-    var reader = new FileReader()
-
-    reader.onload = function(ev) {
-        var img = new Image()
-        img.onload = onImageReady.bind(null, img)
-    }
-    if (ev.target.files[0]) {
-
-        reader.readAsDataURL(ev.target.files[0])
-    }
+function addMark() {
+    gCtx.rect(gMeme.lines[gMeme.selectedLineIdx - 1].positionx, (gMeme.lines[gMeme.selectedLineIdx - 1].positiony) - 35, 250, 50);
+    gCtx.strokeStyle = "white";
+    gCtx.stroke();
+    gCtx.beginPath();
+    gCtx.rect(gMeme.lines[gMeme.selectedLineIdx].positionx, (gMeme.lines[gMeme.selectedLineIdx].positiony) - 35, 250, 50);
+    gCtx.strokeStyle = "red";
+    gCtx.stroke();
 }

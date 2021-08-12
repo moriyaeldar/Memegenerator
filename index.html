@@ -16,66 +16,80 @@
         <nav>
             <ul class="main-nav flex clean-list">
                 <li><a href="#" onclick="toggleMenu()">memes</a></li>
-                <li><a href="#" onclick="toggleMenu()">gallery</a></li>
+                <li><a href="#" onclick="onEditorClose()" onclick="toggleMenu()">gallery</a></li>
                 <li><a href="#" onclick="toggleMenu()">about</a></li>
             </ul>
         </nav>
         <button class="btn-menu-toggle" onclick="toggleMenu()">☰</button>
     </header>
-
+    <!-- Gallery -->
     <div class="opening-window">
         <div class="images-gallery grid ">
-            <img class="pic1" onclick="onEditorOpen(this)" src="pic/1.jpg" alt="">
-            <img class="pic2" onclick="onEditorOpen(this)" src="pic/2.jpg" alt="">
-            <img class="pic3" onclick="onEditorOpen(this)" src="pic/3.jpg" alt="">
-            <img class="pic4" onclick="onEditorOpen(this)" src="pic/4.jpg" alt="">
-            <img class="pic5" onclick="onEditorOpen(this)" src="pic/5.jpg" alt="">
-            <img class="pic6" onclick="onEditorOpen(this)" src="pic/6.jpg" alt="">
-            <img class="pic7" onclick="onEditorOpen(this)" src="pic/7.jpg" alt="">
-            <img class="pic8" onclick="onEditorOpen(this)" src="pic/8.jpg" alt="">
-            <img class="pic9" onclick="onEditorOpen(this)" src="pic/9.jpg" alt="">
-            <img class="pic10" onclick="onEditorOpen(this)" src="pic/10.jpg" alt="">
-            <img class="pic11" onclick="onEditorOpen(this)" src="pic/11.jpg" alt="">
-            <img class="pic12" onclick="onEditorOpen(this)" src="pic/12.jpg" alt="">
-            <img class="pic13" onclick="onEditorOpen(this)" src="pic/13.jpg" alt="">
-            <img class="pic14" onclick="onEditorOpen(this)" src="pic/14.jpg" alt="">
-            <img class="pic15" onclick="onEditorOpen(this)" src="pic/15.jpg" alt="">
-            <img class="pic16" onclick="onEditorOpen(this)" src="pic/16.jpg" alt="">
-            <img class="pic17" onclick="onEditorOpen(this)" src="pic/17.jpg" alt="">
-            <img class="pic18" onclick="onEditorOpen(this)" src="pic/18.jpg" alt="">
+            <img class="pic1" onclick="onEditorOpen(this,id)" src="pic/1.jpg" id="01" alt="">
+            <img class="pic2" onclick="onEditorOpen(this,id)" src="pic/2.jpg" id="02" alt="">
+            <img class="pic3" onclick="onEditorOpen(this,id)" src="pic/3.jpg" id="03" alt="">
+            <img class="pic4" onclick="onEditorOpen(this,id)" src="pic/4.jpg" id="04" alt="">
+            <img class="pic5" onclick="onEditorOpen(this,id)" src="pic/5.jpg" id="05" alt="">
+            <img class="pic6" onclick="onEditorOpen(this,id)" src="pic/6.jpg" id="06" alt="">
+            <img class="pic7" onclick="onEditorOpen(this,id)" src="pic/7.jpg" id="07" alt="">
+            <img class="pic8" onclick="onEditorOpen(this,id)" src="pic/8.jpg" id="08" alt="">
+            <img class="pic9" onclick="onEditorOpen(this,id)" src="pic/9.jpg" id="09" alt="">
+            <img class="pic10" onclick="onEditorOpen(this,id)" src="pic/10.jpg" id="10" alt="">
+            <img class="pic11" onclick="onEditorOpen(this,id)" src="pic/11.jpg" id="11" alt="">
+            <img class="pic12" onclick="onEditorOpen(this,id)" src="pic/12.jpg" id="12" alt="">
+            <img class="pic13" onclick="onEditorOpen(this,id)" src="pic/13.jpg" id="13" alt="">
+            <img class="pic14" onclick="onEditorOpen(this,id)" src="pic/14.jpg" id="14" alt="">
+            <img class="pic15" onclick="onEditorOpen(this,id)" src="pic/15.jpg" id="15" alt="">
+            <img class="pic16" onclick="onEditorOpen(this,id)" src="pic/16.jpg" id="16" alt="">
+            <img class="pic17" onclick="onEditorOpen(this,id)" src="pic/17.jpg" id="17" alt="">
+            <img class="pic18" onclick="onEditorOpen(this,id)" src="pic/18.jpg" id="18" alt="">
         </div>
-
-
     </div>
+
+    <!-- Editor -->
+
     <div class="editor">
         <a href="#" onclick="onEditorClose()">← Back to Gallery</a>
-        <div class="bar-options">
+        <div class="flex row-reverse">
+            <div class="editor-options">
+                <input onkeyup="onDrowText(event,id)" type="text" name="text" placeholder="text here" id="0">
 
-        </div> <select onchange="setFont(value)">
-        <option value="Impact">Impact</option>
-        <option value="Roboto">Roboto</option>
-        <option value="Varela">Varela</option>
-        <option value="Nunito">Nunito</option>
-        <option value="Nunito-Bold">Nunito-Bold</option>
-    </select>
-        <input onclick="drawText(event)" onkeyup="renderText(event)" type="text" name="text1" placeholder="text here" id="1">
-        <input onclick="drawText(event)" type="text" name="text2" placeholder="text here" id="2">
-        <input onclick="drawText(event)" type="text" name="text3" placeholder="text here" id="3">
-        <p>select color:</p><input onclick="onInputFromUser()" type="color" name="color" id="">
+                <button onclick="onClearLine()"><img src="icons/delete.png" alt=""></button>
+                <button onclick="onAddLine()">➕</button>
+                <button onclick="onChangeLine()">↓↑</button>
+
+                <select onchange="setFont(value)">
+            <option class="impact" value="Impact">Impactˬ</option>
+            <option class="roboto" value="Roboto">Roboto</option>
+            <option class="varela" value="Varela">Varela</option>
+            <option class="nunito" value="Nunito">Nunito</option>
+            <option class="nunito-bold" value="Nunito-Bold">Nunito-Bold</option>
+        </select>
+
+                <input onclick="onChangeColor(value)" type="color" name="color" id="">
+                <button onclick="onLeftAline()"><img src="icons/left-align.png" alt=""></button>
+                <button onclick="onCenterAline()"><img src="icons/center-align.png" alt=""></button>
+                <button onclick="onRightAline()"><img src="icons/right-align.png" alt=""></button>
+                <button class="minus" onclick="onSizeText(this)"><img src="icons/reduce-font-size.png" alt=""></button>
+                <button class="plus" onclick="onSizeText(this)"><img src="icons/top-grades.png" alt=""></button>
+
+                <div class="stikers flex">
+                    <div class="stiker-1">🙈</div>
+                    <div class="stiker-2">👻</div>
+                    <div class="stiker-3">🤖</div>
+                    <div class="stiker-4">😎</div>
+                    <div class="stiker-5">🧐</div>
+                </div>
+
+                <button class="download"><a href="#" onclick="downloadCanvas(this)" download="myphoto">Download</a>        </button>
+            </div>
 
 
-        <button onclick="clearCanvas()">Clear</button>
-        <button><a href="#" onclick="downloadCanvas(this)" download="myphoto">Download</a>
-        </button>
-
-        <div class="share-container"></div>
-        <div class="canvas-container">
-            <canvas id="my-canvas" height="566.53" width="650"></canvas>
+            <div class="canvas-container">
+                <canvas id="my-canvas" height="566.53" width="650"></canvas>
+            </div>
         </div>
     </div>
-    </div>
-    </div>
-
     <script src="js/upload-service.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/service.js"></script>

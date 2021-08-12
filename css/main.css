@@ -40,6 +40,26 @@ body {
     src: url(/fonts/VarelaRound-Regular.ttf);
 }
 
+.impact {
+    font-family: Impact;
+}
+
+.roboto {
+    font-family: Roboto;
+}
+
+.varela {
+    font-family: VarelaRound;
+}
+
+.nunito {
+    font-family: Nunito-regular;
+}
+
+.nunito-bold {
+    font-family: Nunito-bold;
+}
+
 
 /* MAIN ITEMS */
 
@@ -62,6 +82,7 @@ a {
 .logo {
     width: 152px;
     height: 32px;
+    justify-self: start;
 }
 
 .bar-options {
@@ -72,6 +93,22 @@ a {
 
 button {
     margin: 4px;
+    cursor: pointer;
+}
+
+button img {
+    width: 15px;
+    height: 15px;
+}
+
+button.download {
+    background-color: rgb(230, 154, 54);
+    color: white;
+    font-family: Roboto;
+    border-radius: 25px;
+    font-size: 20px;
+    margin-top: 370px;
+    margin-left: 70px;
 }
 
 input {
@@ -95,6 +132,18 @@ header a {
     letter-spacing: 0.8px;
 }
 
+.editor-options {
+    background-color: #b3b1b196;
+    width: 250px;
+    height: 565px;
+    margin: 10px;
+}
+
+.stikers {
+    font-size: 35px;
+    margin-top: 10px;
+}
+
 
 /* pics */
 
@@ -104,6 +153,7 @@ header a {
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(4, 1fr);
     gap: 4px;
+    cursor: pointer;
 }
 
 img {
@@ -212,12 +262,16 @@ img {
 /* main nav */
 
 .main-nav {
-    gap: 0 0px;
+    justify-self: end;
 }
 
 .main-nav a {
     text-decoration: none;
     text-transform: uppercase;
+}
+
+.main-nav a:hover {
+    color: chocolate;
 }
 
 
@@ -245,6 +299,10 @@ img {
 
 .flex.column {
     flex-direction: column;
+}
+
+.flex.row-reverse {
+    flex-direction: row-reverse;
 }
 
 
@@ -303,6 +361,12 @@ img {
         text-align: center;
         padding: 10px 0;
         border-bottom: 1px solid #e7e7e7;
+    }
+    .opening-window {
+        max-width: 500px;
+    }
+    .editor {
+        max-width: 450px;
     }
     .screen {
         position: fixed;

@@ -1,9 +1,3 @@
-function clearCanvas() {
-    gCtx.clearRect(this.position.x, this.position.y, this.options.width, this.options.height);
-
-
-}
-
 function downloadCanvas(elLink) {
     const data = gCanvas.toDataURL()
     elLink.href = data
