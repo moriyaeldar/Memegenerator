@@ -1,68 +1,40 @@
 'use strict'
-var gCurrFont;
+
 var gMeme = {
     selectedImgSrc: 0,
     selectedLineIdx: 0,
     lines: [{
-            txt: 'hiiiiiiiiii',
-            size: '45',
-            align: 'center',
+            id: 0,
+            txt: 'text here',
+            size: 45,
+            align: 'left',
             color: 'white',
             font: 'Impact',
             positionx: 150,
-            positiony: 150
-        },
-        {
-            txt: 'relly???!!',
-            size: ' 45',
-            align: 'center',
-            color: 'white',
-            font: 'Impact',
-            positionx: 150,
-            positiony: 300
-        },
-        {
-            txt: 'yes, I know it!',
-            size: '45',
-            align: 'center',
-            color: 'white',
-            font: 'Impact',
-            positionx: 150,
-            positiony: 480
+            positiony: 150,
+
         }
 
     ]
 }
-console.log(gMeme);
-// Render
 
-function renderText() {
-    var txt = gMeme.lines[gMeme.selectedLineIdx].txt
-    txt = gTxt
-    gMeme.lines.forEach(line => {
-        line.fillStyle = gCurrColor
-        line.font = gCurrFont
-        line.size = gCurrSize
-        line.textAlign = gCurrAlign
-    });
-
-
-}
+var painting = false
 
 
 
 // On canvas
 
+function drawText(id) {
+    var line = getLineById(id)
+    gCtx.lineWidth = 2;
+    gCtx.fillStyle = line.color;
+    gCtx.strokeStyle = 'black'
+    gCtx.font = `${line.size}px ${line.font}`;
+    gCtx.textAlign = line.align;
+    gCtx.fillText(line.txt, line.positionx, line.positiony);
+    gCtx.strokeText(line.txt, line.positionx, line.positiony)
 
-function drawText(gTxt, x, y) {
-    gCtx.lineWidth = 2
-    gCtx.fillStyle = 'white'
-    gCtx.font = '40px Impact'
-    gCtx.fillText(gTxt, x, y)
-    gCtx.strokeText(gTxt, x, y)
 }
-
-
 
 
 function drawImg(src) {
@@ -75,42 +47,115 @@ function drawImg(src) {
 
 
 function setFont(font) {
+    var currLine = gMeme.lines[gMeme.selectedLineIdx]
     switch (font) {
         case 'Impact':
-            gCurrFont = 'Impact'
+            currLine.font = 'Impact'
             break;
         case 'Roboto':
-            gCurrFont = 'Roboto'
+            currLine.font = 'Roboto'
             break;
         case 'Varela':
-            gCurrFont = 'Varela'
+            currLine.font = 'Varela'
             break;
         case 'Nunito':
-            gCurrFont = 'Nunito'
+            currLine.font = 'Nunito'
             break;
         case 'Nunito-Bold':
-            gCurrFont = 'Nunito - Bold'
+            currLine.font = 'Nunito - Bold'
             break;
 
         default:
-            gCurrFont = 'Impact'
+            currLine.font = 'Impact'
             break;
     }
 
-    gCurrFont = font
+
 }
 
 function clearLine(id) {
     gMeme.lines.splice(id, 1)
-    console.log(gMeme);
+    if (gMeme.lines.length === 0) {
+        gMeme.lines.push({
+            id: 0,
+            txt: 'text here',
+            size: 45,
+            align: 'left',
+            color: 'white',
+            font: 'Impact',
+            positionx: 150,
+            positiony: 150
+        })
+
+    }
 }
 
-function addMark() {
-    gCtx.rect(gMeme.lines[gMeme.selectedLineIdx - 1].positionx, (gMeme.lines[gMeme.selectedLineIdx - 1].positiony) - 35, 250, 50);
-    gCtx.strokeStyle = "white";
-    gCtx.stroke();
-    gCtx.beginPath();
-    gCtx.rect(gMeme.lines[gMeme.selectedLineIdx].positionx, (gMeme.lines[gMeme.selectedLineIdx].positiony) - 35, 250, 50);
-    gCtx.strokeStyle = "red";
-    gCtx.stroke();
+function drawRect(ev) {
+    if (!painting) return
+    const { offsetX, offsetY } = ev
+    console.log(ev);
+    gCtx.beginPath()
+    gCtx.rect(offsetX - 120, offsetY - 30, 290, 50)
+    gCtx.strokeStyle = "red"
+    gCtx.stroke()
+
+    if (offsetY < 200) {
+        gMeme.selectedLineIdx = 0
+    } else if (offsetY < 400) {
+        gMeme.selectedLineIdx = 2
+    } else {
+        gMeme.selectedLineIdx = 1
+    }
+}
+
+function startPosition(ev) {
+    painting = true
+    drawRect(ev)
+}
+
+function finishPosition() {
+    painting = false
+    gCtx.beginPath()
+}
+
+
+
+
+function getLineById(lineId) {
+    var line = gMeme.lines.find(function(line) {
+        return line.id === lineId
+    })
+    return line
+}
+
+function addLine() {
+    if (gMeme.lines.length === 3) return
+    if (gMeme.lines.length === 1) {
+
+        gMeme.lines.push({
+            id: 1,
+            txt: 'text here',
+            size: 45,
+            align: 'left',
+            color: 'white',
+            font: 'Impact',
+            positionx: 150,
+            positiony: 480,
+
+        })
+    } else {
+        gMeme.lines.push({
+            id: 2,
+            txt: 'text here',
+            size: 45,
+            align: 'left',
+            color: 'white',
+            font: 'Impact',
+            positionx: 150,
+            positiony: 300,
+
+        })
+    }
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
+
 }
