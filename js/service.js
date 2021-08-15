@@ -108,6 +108,15 @@ function drawRect(ev) {
     }
 }
 
+
+function setRect(x, y) {
+    gCtx.beginPath()
+    gCtx.rect(x - 80, y - 40, 290, 50)
+    gCtx.strokeStyle = "red"
+    gCtx.stroke()
+}
+
+
 function startPosition(ev) {
     painting = true
     drawRect(ev)
@@ -117,9 +126,6 @@ function finishPosition() {
     painting = false
     gCtx.beginPath()
 }
-
-
-
 
 function getLineById(lineId) {
     var line = gMeme.lines.find(function(line) {
@@ -156,6 +162,21 @@ function addLine() {
 
         })
     }
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
+
+}
+
+function searchByKeyWord(searchKey) {
+
+}
+
+function inputStiker(icon) {
+    gMeme.lines.push({
+        txt: icon,
+        size: 100,
+        positionx: 400,
+        positiony: 300
+    })
     gMeme.selectedLineIdx = gMeme.lines.length - 1
 
 }

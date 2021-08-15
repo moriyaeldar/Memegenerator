@@ -11,10 +11,10 @@
 <body onload="init()">
     <div class="screen" onclick="toggleMenu()"></div>
 
-    <header class="flex space-between align-center">
+    <header class="flex space-between align-center main-layout">
         <img class="logo" src="pic/LOGO.png" alt="">
         <nav>
-            <ul class="main-nav flex clean-list">
+            <ul class="main-nav flex clean-list ">
                 <li><a href="#" onclick="toggleMenu()" data-trans="memes">memes</a></li>
                 <li><a href="#" onclick="onEditorClose()" onclick="toggleMenu()" data-trans="gallery">gallery</a></li>
                 <li><a href="#" onmousedown="onShowAbout()" onclick="toggleMenu()" data-trans="about">about</a></li>
@@ -26,30 +26,31 @@
             <option value="he">עברית</option>
             
         </select>
+
     </header>
     <!-- Gallery -->
-    <div class="opening-window">
-        <!-- <input type="search" name="search" placeholder="search" id="search"> -->
+    <div class="opening-window ">
+        <input onkeydown="onSearchByKeyWord(this)" type="search" name="search" placeholder="search" id="search">
 
-        <div class="images-gallery grid ">
-            <img class="pic1" onclick="onEditorOpen(this,id)" src="pic/1.jpg" id="01" alt="">
-            <img class="pic2" onclick="onEditorOpen(this,id)" src="pic/2.jpg" id="02" alt="">
-            <img class="pic3" onclick="onEditorOpen(this,id)" src="pic/3.jpg" id="03" alt="">
-            <img class="pic4" onclick="onEditorOpen(this,id)" src="pic/4.jpg" id="04" alt="">
-            <img class="pic5" onclick="onEditorOpen(this,id)" src="pic/5.jpg" id="05" alt="">
-            <img class="pic6" onclick="onEditorOpen(this,id)" src="pic/6.jpg" id="06" alt="">
-            <img class="pic7" onclick="onEditorOpen(this,id)" src="pic/7.jpg" id="07" alt="">
-            <img class="pic8" onclick="onEditorOpen(this,id)" src="pic/8.jpg" id="08" alt="">
-            <img class="pic9" onclick="onEditorOpen(this,id)" src="pic/9.jpg" id="09" alt="">
-            <img class="pic10" onclick="onEditorOpen(this,id)" src="pic/10.jpg" id="10" alt="">
-            <img class="pic11" onclick="onEditorOpen(this,id)" src="pic/11.jpg" id="11" alt="">
-            <img class="pic12" onclick="onEditorOpen(this,id)" src="pic/12.jpg" id="12" alt="">
-            <img class="pic13" onclick="onEditorOpen(this,id)" src="pic/13.jpg" id="13" alt="">
-            <img class="pic14" onclick="onEditorOpen(this,id)" src="pic/14.jpg" id="14" alt="">
-            <img class="pic15" onclick="onEditorOpen(this,id)" src="pic/15.jpg" id="15" alt="">
-            <img class="pic16" onclick="onEditorOpen(this,id)" src="pic/16.jpg" id="16" alt="">
-            <img class="pic17" onclick="onEditorOpen(this,id)" src="pic/17.jpg" id="17" alt="">
-            <img class="pic18" onclick="onEditorOpen(this,id)" src="pic/18.jpg" id="18" alt="">
+        <div class="images-gallery grid main-layout ">
+            <img class="pic1" onclick="onEditorOpen(this,alt)" src="pic/1.jpg" id="01" alt="Politicians">
+            <img class="pic2" onclick="onEditorOpen(this,alt)" src="pic/2.jpg" id="02" alt="Cuteness">
+            <img class="pic3" onclick="onEditorOpen(this,alt)" src="pic/3.jpg" id="03" alt="Cuteness">
+            <img class="pic4" onclick="onEditorOpen(this,alt)" src="pic/4.jpg" id="04" alt="Cuteness">
+            <img class="pic5" onclick="onEditorOpen(this,alt)" src="pic/5.jpg" id="05" alt="Cuteness">
+            <img class="pic6" onclick="onEditorOpen(this,alt)" src="pic/6.jpg" id="06" alt="Celebs">
+            <img class="pic7" onclick="onEditorOpen(this,alt)" src="pic/7.jpg" id="07" alt="Cuteness">
+            <img class="pic8" onclick="onEditorOpen(this,alt)" src="pic/8.jpg" id="08" alt="Celebs">
+            <img class="pic9" onclick="onEditorOpen(this,alt)" src="pic/9.jpg" id="09" alt="Cuteness">
+            <img class="pic10" onclick="onEditorOpen(this,alt)" src="pic/10.jpg" id="10" alt="Politicians">
+            <img class="pic11" onclick="onEditorOpen(this,alt)" src="pic/11.jpg" id="11" alt="Celebs">
+            <img class="pic12" onclick="onEditorOpen(this,alt)" src="pic/12.jpg" id="12" alt="Celebs">
+            <img class="pic13" onclick="onEditorOpen(this,alt)" src="pic/13.jpg" id="13" alt="Celebs">
+            <img class="pic14" onclick="onEditorOpen(this,alt)" src="pic/14.jpg" id="14" alt="Celebs">
+            <img class="pic15" onclick="onEditorOpen(this,alt)" src="pic/15.jpg" id="15" alt="Celebs">
+            <img class="pic16" onclick="onEditorOpen(this,alt)" src="pic/16.jpg" id="16" alt="Celebs">
+            <img class="pic17" onclick="onEditorOpen(this,alt)" src="pic/17.jpg" id="17" alt="Politicians">
+            <img class="pic18" onclick="onEditorOpen(this,alt)" src="pic/18.jpg" id="18" alt="Cuteness">
 
         </div>
 
@@ -57,7 +58,7 @@
     <!-- Editor -->
 
     <div class="editor">
-        <a href="#" style="color: dimgray;" onclick="onEditorClose()" data-trans="backToGallery"> ← Back to Gallery</a>
+        <a href="#" style="color: dimgray;" onclick="onEditorClose()" data-trans="backToGallery">← Back to Gallery</a>
         <div class="layout">
             <div class="editor-options">
                 <div class="headline" style="color: rgb(92, 91, 90);" data-trans="title">Edit Text Lines</div>
@@ -115,9 +116,9 @@
         <h1>About</h1>
         <h3>Wellcome to my meme generator.
         </h3>
-        <h3>enjoy! and tell all of your friends.. </h3>
+        <h3>enjoy! and don't forget to tell all of your friends... </h3>
 
-        <h3>Moriya Eldar</h3>
+        <h5>Moriya Eldar</h5>
     </div>
 
     <script src="js/upload-service.js"></script>

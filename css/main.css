@@ -12,6 +12,10 @@ body {
     background-color: white
 }
 
+.main-layout {
+    width: 900px;
+}
+
 body.rtl {
     direction: rtl;
 }
@@ -25,27 +29,27 @@ body.rtl .btn-delete {
 
 @font-face {
     font-family: Nunito-bold;
-    src: url(/fonts/Nunito-Bold.ttf);
+    src: url(../fonts/Nunito-Bold.ttf);
 }
 
 @font-face {
     font-family: Nunito-regular;
-    src: url(/fonts/Nunito-Regular.ttf);
+    src: url(../fonts/Nunito-Regular.ttf);
 }
 
 @font-face {
     font-family: Impact;
-    src: url(/fonts/impact.ttf);
+    src: url(../fonts/impact.ttf);
 }
 
 @font-face {
     font-family: Roboto;
-    src: url(/fonts/Roboto-Regular.ttf);
+    src: url(../fonts/Roboto-Regular.ttf);
 }
 
 @font-face {
     font-family: VarelaRound;
-    src: url(/fonts/VarelaRound-Regular.ttf);
+    src: url(../fonts/VarelaRound-Regular.ttf);
 }
 
 .impact {
@@ -83,6 +87,11 @@ h1 {
     color: rgba(53, 150, 150, 0.637);
 }
 
+h5 {
+    font-family: Roboto;
+    color: rgba(34, 88, 88, 0.555);
+}
+
 a {
     text-decoration: none;
     color: black;
@@ -114,7 +123,10 @@ a {
 
 #search {
     margin-bottom: 30px;
-    border-color: chocolate;
+    border-color: rgb(165, 161, 159);
+    width: 900px;
+    height: 30px;
+    border-radius: 25px;
 }
 
 button {
@@ -138,13 +150,13 @@ button.download {
     font-family: Roboto;
     border-radius: 25px;
     font-size: 20px;
-    margin-top: 210px;
+    margin-top: 200px;
     margin-left: 70px;
 }
 
 #txt {
-    width: 235px;
-    height: 24px;
+    width: 240px;
+    height: 35px;
     border-color: rgb(235, 126, 48)
 }
 
@@ -154,8 +166,8 @@ input {
 
 header {
     background-color: white;
-    height: 120px;
-    margin-bottom: 5rem;
+    margin-bottom: 40px;
+    margin-top: 5px;
     font-family: Roboto;
 }
 
@@ -170,11 +182,17 @@ header a {
     letter-spacing: 0.8px;
 }
 
+.editor {
+    width: 900px;
+}
+
 .editor-options {
     background-color: #ebebeb96;
-    width: 270px;
+    width: 300px;
     height: 565px;
-    margin: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-top: 10px;
     padding-left: 10px;
     padding-right: 10px;
     padding-top: 10px;
@@ -190,18 +208,19 @@ header a {
 
 /* pics */
 
+.opening-window {
+    margin-bottom: 20px;
+}
+
 .images-gallery {
-    width: 100%;
-    height: 100vh;
     grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    /* grid-template-rows: repeat(4, 1fr); */
     gap: 4px;
     cursor: pointer;
 }
 
 img {
-    width: 200px;
-    height: 200px;
+    width: 100%;
 }
 
 .pic1 {
@@ -303,17 +322,10 @@ img {
 }
 
 
-/* HEADER */
-
-.main-header {
-    height: 160px;
-}
-
-
 /* main nav */
 
 .main-nav {
-    justify-self: end;
+    flex: 1;
 }
 
 .main-nav a {
@@ -379,21 +391,21 @@ img {
 
 /* MOBILE ONLY */
 
-@media (max-width: 820px) {
-    main {
-        margin-inline-start: 100px;
-        margin-inline-end: 100px;
+@media (max-width: 580px) {
+    .main-layout {
+        width: 560px;
     }
     .layout {
+        display: flex;
         flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
     }
     .editor-options {
-        width: 500px;
-        height: 200px;
+        width: 300px;
     }
     .canvas-container {
-        width: 500px;
-        height: 600px;
+        width: 300px;
     }
     .main-nav a {
         text-decoration: none;
@@ -404,10 +416,10 @@ img {
         max-height: 10vh;
     }
     button.download {
-        margin-top: 40px;
+        margin-top: 50px;
     }
     header {
-        height: 100px;
+        height: 50px;
     }
     .main-nav {
         position: fixed;
@@ -420,6 +432,7 @@ img {
         box-shadow: 0px 0px 0px transparent;
         transform: translateX(100%);
         transition: transform .6s;
+        text-align: center;
     }
     body.menu-open .main-nav {
         transform: translateX(0);
@@ -457,16 +470,14 @@ img {
     }
     /* Images */
     .images-gallery {
-        width: 100%;
-        height: 100vh;
+        /* width: 100%; */
         grid-template-columns: repeat(3, 1fr);
-        grid-template-rows: repeat(7, 1fr);
+        /* grid-template-rows: repeat(7, 1fr); */
         gap: 4px;
         cursor: pointer;
     }
     img {
-        width: 100px;
-        height: 100px;
+        width: 100%;
     }
     .pic1 {
         grid-column: 1/2;
@@ -545,7 +556,7 @@ img {
 
 /* MEDUME */
 
-@media (min-width: 820px) {
+@media (min-width: 580px) {
     main {
         margin-inline-start: 161px;
         margin-inline-end: 159px;
@@ -558,11 +569,26 @@ img {
         width: 130px;
         height: 130px;
     }
-    nav li a {
-        padding: 70px;
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }
+    .main-layout {
+        width: 560px;
+    }
+    .layout {
+        justify-content: center;
+        align-items: center;
     }
     .btn-menu-toggle {
         display: none;
+    }
+    li {
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        height: 20px;
     }
 }
 
@@ -574,15 +600,12 @@ img {
         margin-inline-start: 261px;
         margin-inline-end: 259px;
     }
+    .main-layout {
+        width: 900px;
+    }
     nav a {
         width: 130px;
         height: 130px;
-    }
-    nav li a {
-        padding: 60px;
-    }
-    main {
-        max-width: 980px;
     }
     .screen {
         position: fixed;
@@ -596,5 +619,14 @@ img {
         opacity: 0;
         pointer-events: none;
         transition: opacity .6s;
+    }
+    .canvas-container {
+        width: 625px;
+    }
+    li {
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        height: 20px;
     }
 }
