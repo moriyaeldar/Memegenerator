@@ -90,23 +90,32 @@ function clearLine(id) {
     }
 }
 
-function drawRect(ev) {
-    if (!painting) return
-    const { offsetX, offsetY } = ev
-    console.log(ev);
+// function drawRect(ev) {
+//     if (!painting) return
+//     const { offsetX, offsetY } = ev
+//     console.log(ev);
+//     gCtx.beginPath()
+//     gCtx.rect(offsetX - 120, offsetY - 30, 290, 50)
+//     gCtx.strokeStyle = "red"
+//     gCtx.stroke()
+
+//     if (offsetY < 200) {
+//         gMeme.selectedLineIdx = 0
+//     } else if (offsetY < 400) {
+//         gMeme.selectedLineIdx = 2
+//     } else {
+//         gMeme.selectedLineIdx = 1
+//     }
+// }
+
+
+function setRect(x, y) {
     gCtx.beginPath()
-    gCtx.rect(offsetX - 120, offsetY - 30, 290, 50)
+    gCtx.rect(x - 80, y - 40, 290, 50)
     gCtx.strokeStyle = "red"
     gCtx.stroke()
-
-    if (offsetY < 200) {
-        gMeme.selectedLineIdx = 0
-    } else if (offsetY < 400) {
-        gMeme.selectedLineIdx = 2
-    } else {
-        gMeme.selectedLineIdx = 1
-    }
 }
+
 
 function startPosition(ev) {
     painting = true
@@ -117,9 +126,6 @@ function finishPosition() {
     painting = false
     gCtx.beginPath()
 }
-
-
-
 
 function getLineById(lineId) {
     var line = gMeme.lines.find(function(line) {
@@ -156,6 +162,21 @@ function addLine() {
 
         })
     }
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
+
+}
+
+function searchByKeyWord(searchKey) {
+
+}
+
+function inputStiker(icon) {
+    gMeme.lines.push({
+        txt: icon,
+        size: 100,
+        positionx: 400,
+        positiony: 300
+    })
     gMeme.selectedLineIdx = gMeme.lines.length - 1
 
 }

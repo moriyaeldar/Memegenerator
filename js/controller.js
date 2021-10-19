@@ -2,7 +2,7 @@
 var gCanvas;
 var gCtx;
 var gTxt;
-
+var isEditing = false;
 console.log(gMeme);
 
 function init() {
@@ -64,10 +64,12 @@ function renderMeme() {
             gCtx.textAlign = line.align;
             gCtx.fillText(line.txt, line.positionx, line.positiony);
             gCtx.strokeText(line.txt, line.positionx, line.positiony)
+            if (isEditing) {
+                setRect(gMeme.lines[gMeme.selectedLineIdx].positionx, gMeme.lines[gMeme.selectedLineIdx].positiony)
+            }
         });
 
     }
-
 
 }
 
@@ -81,6 +83,9 @@ function onAddLine() {
 function onChangeLine() {
     if (gMeme.selectedLineIdx === 2) gMeme.selectedLineIdx = 0
     else gMeme.selectedLineIdx++
+        isEditing = true
+
+    renderMeme()
 
 }
 
@@ -88,7 +93,6 @@ function onClearLine() {
     clearLine(gMeme.lines[gMeme.selectedLineIdx].id)
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
     renderMeme()
-
 }
 
 function onChangeColor() {
@@ -126,7 +130,9 @@ function onInputStiker(icon) {
     gCtx.lineWidth = 2;
     gCtx.strokeStyle = 'black'
     gCtx.font = '100px san-serif'
-    gCtx.fillText(icon, 200, 200);
+    gCtx.fillText(icon, 400, 300);
+    inputStiker(icon)
+
 }
 
 function onLineUp() {
@@ -163,4 +169,8 @@ function onSetLang(lang) {
     }
     doTrans();
 
+}
+
+function onSearchByKeyWord(elInput) {
+    var searchInput = elInput.value
 }
